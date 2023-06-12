@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+<template id="template">
+    <input class='template' type="textarea" id="custom_input">
+    <label for="custom_input" id="extra_label">Please specify</label>
+</template>
+
+<template id="template2">
+    <input class='template' type="textarea" id="other_langs">
+    <label for="other_langs" id="extra_label2">Please seperate languages by commas</label>
+</template>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="styles.css"> 
+    <title>Survey</title>
+</head>
+
+<div id="main">
+<body>
+
+<div id="title">
+    <h2>Please fill out this survey!</h2>
+</div>
+
+<div id="questions">
+
+    <div class="sub" id="question1">
+
+        <form class='form 1' action="/" method="post" name="one_language" id="myform">
+
+            <h3>What is your first language?</h3>
+
+            <input type="radio" id="english" name="first_language" value="English" onclick="otherChecker()">
+            <label for="english">English</label>
+            <br>
+
+            <input type="radio" id="french" name="first_language" value="French" onclick="otherChecker()">
+            <label for="french">French</label>
+            <br>
+
+            <input type="radio" id="spanish" name="first_language" value="Spanish" onclick="otherChecker()">
+            <label for="spanish">Spanish</label>
+            <br>
+
+            <input type="radio" id="mandarin" name="first_language" value="Mandarin" onclick="otherChecker()">
+            <label for="mandarin">Mandarin</label>
+            <br>
+
+            <input type="radio" id="cantonese" name="first_language" value="Cantonese" onclick="otherChecker()">
+            <label for="cantonese">Cantonese</label>
+            <br>
+
+            <input type="radio" id="hindi" name="first_language" value="Hindi" onclick="otherChecker()">
+            <label for="hindi">Hindi</label>
+            <br>
+
+            <input type="radio" id="tamil" name="first_language" value="Tamil" onclick="otherChecker()">
+            <label for="tamil">Tamil</label>
+            <br>
+
+                <input type="radio" id="other" name="first_language" value="other" onclick="otherChecker()">
+                <label for="other">Other</label>
+            </div>
+
+            <br>
+
+        </form>
+
+
+
+
+    <script>
+
+        function otherChecker() {
+
+            var test = document.getElementById('custom_input');
+
+            if (typeof(test) != undefined && test != null && document.getElementById('other').checked) {
+
+            } else if (typeof(test) != undefined && test != null && !(document.getElementById('other').checked)) {
+                document.getElementById('custom_input').remove();
+                document.getElementById('extra_label').remove();
+
+            } else if (document.getElementById('other').checked) {
+                let bottom = document.getElementById('myform');
+                let holder = document.getElementsByTagName('template')[0];
+                let clone = holder.content.cloneNode(true);
+                clone.id = 'test';
+                bottom.appendChild(clone);
+
+            } else { }
+        }
+
+    </script>
+
+    <div class="sub" id="question2">
+
+        <form class='form 2' action="/" method="post" name="multiple_langs" id="multiple_langs">
+
+            <h3>Which languages do you speak? (multi-select)</h3>
+
+            <input type="checkbox" id="speak_english" name="speak_english" value="English">
+            <label for="speak_english">English</label>
+            <br>
+
+            <input type="checkbox" id="speak_french" name="speak_french" value="French">
+            <label for="speak_french">French</label>
+            <br>
+
+            <input type="checkbox" id="speak_spanish" name="speak_spanish" value="Spanish">
+            <label for="speak_spanish">Spanish</label>
+            <br>
+
+            <input type="checkbox" id="speak_mandarin" name="speak_mandarin" value="Mandarin">
+            <label for="speak_mandarin">Mandarin</label>
+            <br>
+
+            <input type="checkbox" id="speak_cantonese" name="speak_cantonese" value="Cantonese">
+            <label for="speak_cantonese">Cantonese</label>
+            <br>
+
+            <input type="checkbox" id="speak_hindi" name="speak_hindi" value="Hindi">
+            <label for="speak_hindi">Hindi</label>
+            <br>
+
+            <input type="checkbox" id="speak_tamil" name="speak_tamil" value="Tamil">
+            <label for="speak_tamil">Tamil</label>
+            <br>
+            
+
+            <input type="checkbox" id="speak_others" name="speak_others" value="Other(s)" onclick="others()">
+            <label for="speak_others">Other(s)</label>
+
+        </form>
+
+        <br>
+     </div>
+
+    <script>
+        function others(){
+
+            var test = document.getElementById('other_langs');
+
+            if (document.getElementById('speak_others').checked && (typeof(test) != undefined && test != null)) {
+
+            } else if (!(document.getElementById('speak_others').checked) && (typeof(test) != undefined && test != null)) {
+                document.getElementById('other_langs').remove();
+                document.getElementById('extra_label2').remove();
+
+            } else if (document.getElementById('speak_others').checked && !(typeof(test) != undefined && test != null)) {
+                let bottom = document.getElementById('multiple_langs');
+                let holder = document.getElementById('template2');
+                let clone = holder.content.cloneNode(true);
+                bottom.appendChild(clone);
+
+            } else { }
+        }
+    </script>
+
+    <div class="sub" id="question3">
+
+        <div id="bday_form">
+
+            <form class='form 3' action="/" method="post" name="bday" id="bday">
+
+                <h3>Please enter your date of birth</h3>
+
+                <input type="date" id="dob">
+
+            </form>
+        </div> 
+    </div>
+
+    <br>
+
+    
+</div>
+
+<div id="button-div">
+<button type="submit" onclick="submitAll()">Submit</button>
+
+<script>
+    function submitAll() {
+    
+    }
+</script>
+
+</div>
+
+</div>
+</body>
+</html>
